@@ -1,343 +1,343 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch Lückentext – Verkehr B1-B2</title>
 
-    <title>OnSET B1–B2 Übungstest</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #222;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #222;
-            min-height: 100vh;
-        }
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
 
-        .container {
-            width: 92%;
-            max-width: 850px;
-            margin: 40px auto;
-        }
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    margin-top: 25px;
+}
 
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 35px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.subtitle {
+    text-align: center;
+    color: #666;
+    line-height: 1.6;
+}
 
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+.info {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
 
-        .header p {
-            color: #666;
-            line-height: 1.6;
-        }
+.info div {
+    flex: 1;
+    background: #f1f1f1;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
 
-        .info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 25px 0;
-        }
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 13px 18px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
-        .info-box {
-            background: #f1f3f5;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-        }
+.start-btn,
+.next-btn,
+.finish-btn {
+    width: 100%;
+    background: #222;
+    color: white;
+}
 
-        .info-box strong {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
+.hidden {
+    display: none;
+}
 
-        button {
-            border: none;
-            border-radius: 10px;
-            padding: 14px 22px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
 
-        .primary {
-            background: #222;
-            color: white;
-            width: 100%;
-            margin-top: 20px;
-        }
+.timer {
+    font-size: 20px;
+}
 
-        button:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
-        }
+.timer.warning {
+    font-weight: bold;
+}
 
-        .hidden {
-            display: none;
-        }
+.progress {
+    width: 100%;
+    height: 9px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
 
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #222;
+    transition: width 0.3s;
+}
 
-        .progress {
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
+.text-box {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #222;
-            transition: width 0.3s;
-        }
+.blank {
+    font-weight: bold;
+    text-decoration: underline;
+}
 
-        .question-number {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+.question-number {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
 
-        .question {
-            font-size: 23px;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
+.question {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
 
-        .answers {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
 
-        .answer {
-            width: 100%;
-            text-align: left;
-            background: #f7f7f7;
-            border: 2px solid #e1e1e1;
-            color: #222;
-        }
+.answer {
+    background: #f7f7f7;
+    border: 2px solid #ddd;
+    text-align: left;
+}
 
-        .answer:hover {
-            background: #eeeeee;
-        }
+.answer:hover {
+    background: #eaeaea;
+}
 
-        .answer.correct {
-            background: #dff5e3;
-            border-color: #43a047;
-        }
+.correct {
+    background: #dff3df !important;
+    border-color: #3a8f3a !important;
+}
 
-        .answer.wrong {
-            background: #fde0e0;
-            border-color: #e53935;
-        }
+.wrong {
+    background: #f8dddd !important;
+    border-color: #c0392b !important;
+}
 
-        .explanation {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f1f3f5;
-            line-height: 1.6;
-        }
+.explanation {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #f1f3f5;
+    line-height: 1.6;
+}
 
-        .next-container {
-            margin-top: 25px;
-            text-align: right;
-        }
+.next-area {
+    margin-top: 20px;
+}
 
-        .next {
-            background: #222;
-            color: white;
-        }
+.result {
+    text-align: center;
+}
 
-        .result {
-            text-align: center;
-        }
+.score {
+    font-size: 55px;
+    font-weight: bold;
+    margin: 20px;
+}
 
-        .score {
-            font-size: 60px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
+.small {
+    color: #777;
+    font-size: 13px;
+    margin-top: 20px;
+}
 
-        .result-message {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+    }
 
-        .restart {
-            background: #222;
-            color: white;
-            width: 100%;
-        }
+    .info {
+        flex-direction: column;
+    }
 
-        .footer {
-            text-align: center;
-            color: #888;
-            font-size: 13px;
-            margin-top: 25px;
-        }
+    .answers {
+        grid-template-columns: 1fr;
+    }
 
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
-                margin: 20px auto;
-            }
-
-            .card {
-                padding: 22px;
-            }
-
-            .header h1 {
-                font-size: 25px;
-            }
-
-            .info {
-                grid-template-columns: 1fr;
-            }
-
-            .question {
-                font-size: 19px;
-            }
-
-            .topbar {
-                font-size: 14px;
-            }
-        }
-    </style>
+    .question {
+        font-size: 18px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <!-- START -->
-    <div id="startScreen" class="card">
+<!-- START SCREEN -->
+<div id="startScreen" class="card">
 
-        <div class="header">
-            <h1>🇩🇪 OnSET B1–B2</h1>
-            <p>
-                Deutsch Übungstest
-            </p>
-        </div>
+<h1>🇩🇪 Deutsch Lückentext</h1>
 
-        <div class="info">
-            <div class="info-box">
-                <strong>10</strong>
-                Fragen
-            </div>
+<p class="subtitle">
+    Verkehr – Niveau B1–B2
+</p>
 
-            <div class="info-box">
-                <strong>B1–B2</strong>
-                Niveau
-            </div>
-
-            <div class="info-box">
-                <strong>✓</strong>
-                Sofortiges Feedback
-            </div>
-        </div>
-
-        <p style="line-height:1.7; color:#555;">
-            Willkommen zum Deutsch-Übungstest!
-            Lies jede Aufgabe aufmerksam und wähle die Antwort,
-            die am besten passt.
-        </p>
-
-        <button class="primary" onclick="startTest()">
-            Test starten
-        </button>
-
-        <div class="footer">
-            Übungsmaterial – kein offizieller OnSET-Test
-        </div>
-
+<div class="info">
+    <div>
+        <strong>20</strong><br>
+        Aufgaben
     </div>
 
-
-    <!-- QUIZ -->
-    <div id="quizScreen" class="card hidden">
-
-        <div class="topbar">
-            <strong>OnSET B1–B2</strong>
-            <span id="scoreDisplay">Punkte: 0</span>
-        </div>
-
-        <div class="progress">
-            <div id="progressBar" class="progress-bar"></div>
-        </div>
-
-        <div class="question-number" id="questionNumber">
-            Frage 1 von 10
-        </div>
-
-        <div class="question" id="questionText"></div>
-
-        <div id="answers" class="answers"></div>
-
-        <div id="explanation" class="explanation hidden"></div>
-
-        <div class="next-container">
-            <button id="nextButton" class="next hidden" onclick="nextQuestion()">
-                Nächste Frage →
-            </button>
-        </div>
-
+    <div>
+        <strong>5 Min.</strong><br>
+        Zeit
     </div>
 
-
-    <!-- RESULT -->
-    <div id="resultScreen" class="card hidden">
-
-        <div class="result">
-
-            <h1>🎉 Test beendet!</h1>
-
-            <p style="margin-top:15px;">
-                Dein Ergebnis:
-            </p>
-
-            <div class="score" id="finalScore">
-                0/10
-            </div>
-
-            <div class="result-message" id="resultMessage"></div>
-
-            <p style="line-height:1.7; color:#666;">
-                Dies ist nur eine Übung und keine offizielle
-                Einstufung deines Sprachniveaus.
-            </p>
-
-            <button class="restart" onclick="restartTest()">
-                Test wiederholen
-            </button>
-
-        </div>
-
+    <div>
+        <strong>B1–B2</strong><br>
+        Niveau
     </div>
+</div>
+
+<p style="line-height:1.7;">
+    Lies den Text und wähle für jede Lücke die passende Antwort.
+    Du hast insgesamt <strong>5 Minuten</strong> Zeit.
+</p>
+
+<p style="line-height:1.7;">
+    Nach jeder Antwort bekommst du eine kurze Erklärung
+    auf Indonesisch.
+</p>
+
+<button class="start-btn" onclick="startTest()">
+    Test starten
+</button>
+
+<p class="small">
+    Hinweis: Dies ist ein Übungstest und kein offizieller OnSET-Test.
+</p>
+
+</div>
+
+
+<!-- QUIZ SCREEN -->
+<div id="quizScreen" class="card hidden">
+
+<div class="topbar">
+
+<span id="questionCounter">
+Frage 1 / 20
+</span>
+
+<span class="timer" id="timer">
+05:00
+</span>
+
+</div>
+
+<div class="progress">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+<div class="text-box" id="contextText">
+</div>
+
+<div class="question-number" id="questionNumber">
+Frage 1
+</div>
+
+<div class="question" id="questionText">
+</div>
+
+<div class="answers" id="answers">
+</div>
+
+<div id="explanation" class="explanation hidden">
+</div>
+
+<div class="next-area">
+
+<button
+id="nextButton"
+class="next-btn hidden"
+onclick="nextQuestion()">
+
+Nächste Aufgabe →
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="card hidden">
+
+<div class="result">
+
+<h1>🎉 Test beendet!</h1>
+
+<p>Dein Ergebnis:</p>
+
+<div class="score" id="finalScore">
+0 / 20
+</div>
+
+<h2 id="resultTitle"></h2>
+
+<p id="resultText"></p>
+
+<button
+class="start-btn"
+onclick="restartTest()">
+
+Test wiederholen
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -346,141 +346,333 @@
 
 const questions = [
 
-    {
-        question: "Obwohl er sehr müde war, ______ er weitergearbeitet.",
-        answers: [
-            "hat",
-            "ist",
-            "wird",
-            "wäre"
-        ],
-        correct: 0,
-        explanation:
-            "Richtig ist „hat“. Das Perfekt von „weiterarbeiten“ wird mit „haben“ gebildet."
-    },
+{
+context:
+"Der Verkehr in vielen deutschen Städten hat in den letzten Jahren stark zugenommen. Besonders morgens und am späten Nachmittag sind die Straßen häufig überfüllt. Viele Menschen fahren trotzdem mit dem Auto, obwohl öffentliche Verkehrsmittel eine gute Alternative sein könnten.",
 
-    {
-        question: "Wenn ich mehr Zeit ______, würde ich öfter Deutsch lernen.",
-        answers: [
-            "habe",
-            "hatte",
-            "hätte",
-            "haben"
-        ],
-        correct: 2,
-        explanation:
-            "Nach „wenn“ im irrealen Bedingungssatz verwendet man hier den Konjunktiv II: „hätte“."
-    },
+question:
+"Besonders morgens und am späten Nachmittag sind die Straßen häufig ______.",
 
-    {
-        question: "Die Studentin interessiert sich sehr ______ Umweltfragen.",
-        answers: [
-            "für",
-            "an",
-            "mit",
-            "über"
-        ],
-        correct: 0,
-        explanation:
-            "Die feste Verbindung lautet: „sich interessieren für + Akkusativ“."
-    },
+answers:
+["überfüllt", "überfahren", "umgestiegen", "verlassen"],
 
-    {
-        question: "Das Projekt wurde wegen des schlechten Wetters ______.",
-        answers: [
-            "abgesagt",
-            "abgesagt worden",
-            "absagen",
-            "abgesagen"
-        ],
-        correct: 0,
-        explanation:
-            "Im Passiv mit „wurde“ steht das Partizip II: „wurde abgesagt“."
-    },
+correct: 0,
 
-    {
-        question: "Er behauptet, dass er gestern keine Zeit ______.",
-        answers: [
-            "hat",
-            "hatte",
-            "haben",
-            "hätte"
-        ],
-        correct: 1,
-        explanation:
-            "Da „gestern“ auf die Vergangenheit verweist, passt hier „hatte“."
-    },
+explanation:
+"„Überfüllt“ bedeutet bahwa suatu tempat terlalu penuh atau terlalu banyak orang/kendaraan. Dalam konteks ini, jalan-jalan dipenuhi kendaraan."
+},
 
-    {
-        question: "Viele Menschen achten inzwischen darauf, weniger Plastik ______.",
-        answers: [
-            "verwenden",
-            "zu verwenden",
-            "verwendet",
-            "verwendeten"
-        ],
-        correct: 1,
-        explanation:
-            "Nach „darauf achten“ folgt häufig eine Konstruktion mit „zu + Infinitiv“."
-    },
+{
+context:
+"Wer täglich mit dem Auto zur Arbeit fährt, muss nicht nur mit Staus rechnen, sondern auch mit hohen Kosten. Benzin, Parkgebühren und Reparaturen können einen erheblichen Teil des monatlichen Budgets ausmachen.",
 
-    {
-        question: "Die Stadt plant neue Maßnahmen, ______ die Luftqualität zu verbessern.",
-        answers: [
-            "damit",
-            "um",
-            "obwohl",
-            "während"
-        ],
-        correct: 1,
-        explanation:
-            "„um ... zu“ drückt einen Zweck aus: „um die Luftqualität zu verbessern“."
-    },
+question:
+"Wer täglich mit dem Auto fährt, muss mit Staus ______.",
 
-    {
-        question: "Ich habe den Artikel gelesen, ______ du mir empfohlen hast.",
-        answers: [
-            "der",
-            "den",
-            "dem",
-            "dessen"
-        ],
-        correct: 1,
-        explanation:
-            "„den“ steht hier im Akkusativ, weil „empfehlen“ ein Akkusativobjekt verlangt."
-    },
+answers:
+["rechnen", "zählen", "denken", "merken"],
 
-    {
-        question: "Trotz ______ Regens fand die Veranstaltung draußen statt.",
-        answers: [
-            "starker",
-            "starkem",
-            "starken",
-            "stark"
-        ],
-        correct: 2,
-        explanation:
-            "„trotz“ verlangt standardsprachlich den Genitiv: „trotz starken Regens“."
-    },
+correct: 0,
 
-    {
-        question: "Die Ergebnisse zeigen, dass nachhaltiges Handeln immer wichtiger ______.",
-        answers: [
-            "wird",
-            "werden",
-            "wurde",
-            "worden"
-        ],
-        correct: 0,
-        explanation:
-            "„Handeln“ ist hier ein neutrales Singularwort: „Handeln wird wichtiger“."
-    }
+explanation:
+"Ungkapan yang benar adalah „mit etwas rechnen“ = memperhitungkan atau mengantisipasi sesuatu."
+},
+
+{
+context:
+"Aus diesem Grund entscheiden sich immer mehr Menschen dafür, mit dem Fahrrad zur Arbeit zu fahren. Besonders in Städten mit gut ausgebauten Radwegen ist das Fahrrad eine praktische und umweltfreundliche Möglichkeit, sich fortzubewegen.",
+
+question:
+"Immer mehr Menschen entscheiden sich ______, mit dem Fahrrad zu fahren.",
+
+answers:
+["dafür", "daran", "dazu", "darauf"],
+
+correct: 0,
+
+explanation:
+"„sich dafür entscheiden, etwas zu tun“ adalah konstruksi yang benar. „dafür“ merujuk pada pilihan yang disebutkan sebelumnya."
+},
+
+{
+context:
+"Allerdings fühlen sich nicht alle Radfahrer im Straßenverkehr sicher. Wenn Radwege fehlen oder schlecht markiert sind, müssen sie häufig auf der Fahrbahn fahren. Dadurch kann es zu gefährlichen Situationen kommen.",
+
+question:
+"Wenn Radwege fehlen, müssen Radfahrer häufig ______ der Fahrbahn fahren.",
+
+answers:
+["auf", "an", "bei", "über"],
+
+correct: 0,
+
+explanation:
+"„auf der Fahrbahn fahren“ berarti berkendara di jalur kendaraan. Preposisi „auf“ digunakan untuk menunjukkan posisi di atas/di suatu permukaan."
+},
+
+{
+context:
+"Auch der öffentliche Nahverkehr spielt eine wichtige Rolle. Busse und Bahnen können viele Menschen gleichzeitig transportieren und dadurch die Zahl der Autos auf den Straßen reduzieren.",
+
+question:
+"Busse und Bahnen können viele Menschen gleichzeitig ______.",
+
+answers:
+["transportieren", "vermeiden", "umfahren", "abstellen"],
+
+correct: 0,
+
+explanation:
+"„transportieren“ berarti mengangkut atau membawa orang/barang dari satu tempat ke tempat lain."
+},
+
+{
+context:
+"In vielen Städten wird deshalb versucht, den öffentlichen Verkehr attraktiver zu machen. Dazu gehören häufig günstigere Fahrkarten, häufigere Verbindungen und modernere Fahrzeuge.",
+
+question:
+"In vielen Städten wird versucht, den öffentlichen Verkehr attraktiver zu ______.",
+
+answers:
+["machen", "gemacht", "machen lassen", "gemacht werden"],
+
+correct: 0,
+
+explanation:
+"Setelah „versuchen“ digunakan struktur „versuchen, etwas zu machen“. Karena di sini ada „zu“, bentuk infinitifnya adalah „machen“."
+},
+
+{
+context:
+"Ein Problem bleibt jedoch die Pünktlichkeit. Wenn ein Bus regelmäßig zu spät kommt, verlieren Fahrgäste Vertrauen in das Verkehrsmittel und steigen möglicherweise wieder auf das Auto um.",
+
+question:
+"Wenn ein Bus regelmäßig zu spät kommt, ______ Fahrgäste Vertrauen.",
+
+answers:
+["verlieren", "verloren", "verlassen", "verändern"],
+
+correct: 0,
+
+explanation:
+"„Vertrauen verlieren“ adalah ungkapan yang tepat, artinya kehilangan kepercayaan."
+},
+
+{
+context:
+"Eine weitere Möglichkeit besteht darin, Fahrgemeinschaften zu bilden. Dabei teilen sich mehrere Personen ein Auto und fahren gemeinsam zur Arbeit oder zur Universität.",
+
+question:
+"Mehrere Personen ______ sich ein Auto.",
+
+answers:
+["teilen", "teilen an", "verteilen", "aufteilen sich"],
+
+correct: 0,
+
+explanation:
+"„sich ein Auto teilen“ berarti menggunakan satu mobil secara bersama-sama."
+},
+
+{
+context:
+"Fahrgemeinschaften haben den Vorteil, dass weniger Autos unterwegs sind. Außerdem können die Kosten für Benzin unter den Mitfahrern aufgeteilt werden.",
+
+question:
+"Die Kosten für Benzin können unter den Mitfahrern ______ werden.",
+
+answers:
+["aufgeteilt", "aufteilen", "aufteilten", "aufgeteilt sein"],
+
+correct: 0,
+
+explanation:
+"Ini adalah bentuk Passiv: „können ... aufgeteilt werden“. Setelah „können“ diperlukan infinitif, sedangkan dalam pasif digunakan „Partizip II + werden“."
+},
+
+{
+context:
+"Für eine nachhaltige Verkehrspolitik reicht es jedoch nicht aus, nur einzelne Maßnahmen umzusetzen. Städte müssen langfristig planen und verschiedene Verkehrsmittel miteinander verbinden.",
+
+question:
+"Für eine nachhaltige Verkehrspolitik ______ es nicht aus, nur einzelne Maßnahmen umzusetzen.",
+
+answers:
+["reicht", "rechnet", "fährt", "steht"],
+
+correct: 0,
+
+explanation:
+"Ungkapan tetapnya adalah „es reicht aus“ = itu sudah cukup."
+},
+
+{
+context:
+"Ein gutes Beispiel sind sogenannte Park-and-Ride-Systeme. Autofahrer können ihr Fahrzeug außerhalb des Stadtzentrums abstellen und anschließend mit Bus oder Bahn weiterfahren.",
+
+question:
+"Autofahrer können ihr Fahrzeug außerhalb des Stadtzentrums ______.",
+
+answers:
+["abstellen", "aufstellen", "einstellen", "anstellen"],
+
+correct: 0,
+
+explanation:
+"„ein Fahrzeug abstellen“ berarti memarkir kendaraan."
+},
+
+{
+context:
+"Auf diese Weise wird versucht, den Autoverkehr im Zentrum zu verringern. Gleichzeitig profitieren die Bewohner von weniger Lärm und einer besseren Luftqualität.",
+
+question:
+"Auf diese Weise wird versucht, den Autoverkehr im Zentrum zu ______.",
+
+answers:
+["verringern", "verändern", "vermehren", "verlängern"],
+
+correct: 0,
+
+explanation:
+"„verringern“ berarti mengurangi. Konteksnya adalah mengurangi jumlah lalu lintas mobil di pusat kota."
+},
+
+{
+context:
+"Auch Fußgänger müssen im Verkehr besonders aufmerksam sein. Wer eine Straße überquert, sollte nicht nur auf die Ampel achten, sondern auch auf abbiegende Fahrzeuge.",
+
+question:
+"Fußgänger sollten besonders ______ sein.",
+
+answers:
+["aufmerksam", "aufmerksam machen", "aufgepasst", "aufmerksam werden"],
+
+correct: 0,
+
+explanation:
+"„aufmerksam sein“ berarti waspada atau memperhatikan dengan baik."
+},
+
+{
+context:
+"Gerade ältere Menschen und Kinder sind im Straßenverkehr besonders gefährdet. Deshalb ist es wichtig, dass Autofahrer die Geschwindigkeitsbegrenzungen beachten und Rücksicht auf andere Verkehrsteilnehmer nehmen.",
+
+question:
+"Autofahrer sollten Rücksicht ______ andere Verkehrsteilnehmer nehmen.",
+
+answers:
+["auf", "an", "für", "mit"],
+
+correct: 0,
+
+explanation:
+"Ungkapan yang benar adalah „Rücksicht auf jemanden nehmen“ = mempertimbangkan/memperhatikan keselamatan atau kepentingan orang lain."
+},
+
+{
+context:
+"Geschwindigkeitsbegrenzungen sollen dazu beitragen, Unfälle zu verhindern. Trotzdem halten sich nicht alle Fahrer daran. Besonders auf Autobahnen wird häufig schneller gefahren als erlaubt.",
+
+question:
+"Nicht alle Fahrer halten sich ______ die Geschwindigkeitsbegrenzungen.",
+
+answers:
+["an", "auf", "mit", "für"],
+
+correct: 0,
+
+explanation:
+"„sich an etwas halten“ berarti mematuhi sesuatu. Jadi: „sich an die Geschwindigkeitsbegrenzungen halten“."
+},
+
+{
+context:
+"Technologische Entwicklungen könnten den Verkehr in Zukunft ebenfalls verändern. Intelligente Ampeln können beispielsweise erkennen, wie viele Fahrzeuge sich auf einer Straße befinden, und die Grünphasen entsprechend anpassen.",
+
+question:
+"Intelligente Ampeln können die Grünphasen entsprechend ______.",
+
+answers:
+["anpassen", "anpassen sich", "angepasst", "aufpassen"],
+
+correct: 0,
+
+explanation:
+"„etwas anpassen“ berarti menyesuaikan sesuatu. Dalam kalimat ini, lampu lalu lintas menyesuaikan durasi lampu hijau."
+},
+
+{
+context:
+"Auch Elektroautos werden immer beliebter. Sie verursachen während der Fahrt keine direkten Abgase und können deshalb dazu beitragen, die Luftverschmutzung in Städten zu reduzieren.",
+
+question:
+"Elektroautos können dazu ______, die Luftverschmutzung zu reduzieren.",
+
+answers:
+["beitragen", "bringen", "führen", "machen"],
+
+correct: 0,
+
+explanation:
+"Struktur yang benar adalah „dazu beitragen, etwas zu tun“ = berkontribusi untuk melakukan sesuatu."
+},
+
+{
+context:
+"Trotz dieser Vorteile gibt es noch Herausforderungen. Die Ladeinfrastruktur muss ausgebaut werden, damit Elektroautos auch auf längeren Strecken problemlos genutzt werden können.",
+
+question:
+"Die Ladeinfrastruktur muss ______ werden.",
+
+answers:
+["ausgebaut", "ausbauen", "aufgebaut", "ausgebaut sein"],
+
+correct: 0,
+
+explanation:
+"Ini adalah Passiv: „muss ausgebaut werden“. „ausbauen“ berarti memperluas atau meningkatkan infrastruktur."
+},
+
+{
+context:
+"Langfristig wird es wahrscheinlich keine einzige Lösung für alle Verkehrsprobleme geben. Stattdessen müssen verschiedene Maßnahmen miteinander kombiniert werden.",
+
+question:
+"Verschiedene Maßnahmen müssen miteinander ______ werden.",
+
+answers:
+["kombiniert", "kombinieren", "kombinierend", "kombiniert sein"],
+
+correct: 0,
+
+explanation:
+"Karena menggunakan Passiv „müssen ... werden“, bentuk yang dibutuhkan adalah Partizip II: „kombiniert“."
+},
+
+{
+context:
+"Eine nachhaltige Verkehrspolitik kann nur funktionieren, wenn Bürger, Unternehmen und Politik zusammenarbeiten. Jeder kann einen Beitrag leisten, indem er beispielsweise öfter öffentliche Verkehrsmittel benutzt oder kurze Strecken mit dem Fahrrad zurücklegt.",
+
+question:
+"Jeder kann einen Beitrag ______.",
+
+answers:
+["leisten", "machen", "geben", "stellen"],
+
+correct: 0,
+
+explanation:
+"Ungkapan yang benar adalah „einen Beitrag leisten“ = memberikan/berkontribusi terhadap suatu hal."
+}
 
 ];
 
 
 let currentQuestion = 0;
 let score = 0;
+let timeLeft = 300;
+let timerInterval = null;
 let answered = false;
 
 
@@ -488,12 +680,66 @@ function startTest() {
 
     currentQuestion = 0;
     score = 0;
+    timeLeft = 300;
 
-    document.getElementById("startScreen").classList.add("hidden");
-    document.getElementById("resultScreen").classList.add("hidden");
-    document.getElementById("quizScreen").classList.remove("hidden");
+    document.getElementById("startScreen")
+        .classList.add("hidden");
 
+    document.getElementById("resultScreen")
+        .classList.add("hidden");
+
+    document.getElementById("quizScreen")
+        .classList.remove("hidden");
+
+    startTimer();
     showQuestion();
+}
+
+
+function startTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(function() {
+
+        timeLeft--;
+
+        updateTimer();
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+            finishTest();
+
+        }
+
+    }, 1000);
+
+}
+
+
+function updateTimer() {
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    let displayMinutes =
+        String(minutes).padStart(2, "0");
+
+    let displaySeconds =
+        String(seconds).padStart(2, "0");
+
+    const timer =
+        document.getElementById("timer");
+
+    timer.textContent =
+        displayMinutes + ":" + displaySeconds;
+
+    if (timeLeft <= 60) {
+        timer.classList.add("warning");
+    }
+
 }
 
 
@@ -503,48 +749,65 @@ function showQuestion() {
 
     const q = questions[currentQuestion];
 
-    document.getElementById("questionNumber").textContent =
-        "Frage " + (currentQuestion + 1) + " von " + questions.length;
+    document.getElementById("questionCounter")
+        .textContent =
+        "Frage " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
 
-    document.getElementById("questionText").textContent =
+    document.getElementById("questionNumber")
+        .textContent =
+        "Frage " + (currentQuestion + 1);
+
+    document.getElementById("contextText")
+        .textContent =
+        q.context;
+
+    document.getElementById("questionText")
+        .textContent =
         q.question;
 
-    document.getElementById("scoreDisplay").textContent =
-        "Punkte: " + score;
+    let progress =
+        (currentQuestion / questions.length) * 100;
 
-    const progress =
-        ((currentQuestion) / questions.length) * 100;
-
-    document.getElementById("progressBar").style.width =
+    document.getElementById("progressBar")
+        .style.width =
         progress + "%";
 
-    const answersContainer =
+
+    const answers =
         document.getElementById("answers");
 
-    answersContainer.innerHTML = "";
+    answers.innerHTML = "";
+
+
+    q.answers.forEach(function(answer, index) {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent =
+            String.fromCharCode(65 + index) +
+            ". " +
+            answer;
+
+        button.onclick = function() {
+            checkAnswer(index);
+        };
+
+        answers.appendChild(button);
+
+    });
+
 
     document.getElementById("explanation")
         .classList.add("hidden");
 
     document.getElementById("nextButton")
         .classList.add("hidden");
-
-
-    q.answers.forEach((answer, index) => {
-
-        const button = document.createElement("button");
-
-        button.className = "answer";
-        button.textContent =
-            String.fromCharCode(65 + index) + ". " + answer;
-
-        button.onclick = function() {
-            checkAnswer(index);
-        };
-
-        answersContainer.appendChild(button);
-
-    });
 
 }
 
@@ -560,7 +823,8 @@ function checkAnswer(selectedIndex) {
     const buttons =
         document.querySelectorAll(".answer");
 
-    buttons.forEach((button, index) => {
+
+    buttons.forEach(function(button, index) {
 
         button.disabled = true;
 
@@ -568,9 +832,10 @@ function checkAnswer(selectedIndex) {
             button.classList.add("correct");
         }
 
-        if (index === selectedIndex &&
-            selectedIndex !== q.correct) {
-
+        if (
+            index === selectedIndex &&
+            selectedIndex !== q.correct
+        ) {
             button.classList.add("wrong");
         }
 
@@ -581,20 +846,30 @@ function checkAnswer(selectedIndex) {
 
         score++;
 
-        document.getElementById("scoreDisplay").textContent =
-            "Punkte: " + score;
-
     }
 
 
     const explanation =
         document.getElementById("explanation");
 
-    explanation.textContent =
-        q.explanation;
+    if (selectedIndex === q.correct) {
+
+        explanation.innerHTML =
+            "<strong>✅ Richtig!</strong><br><br>" +
+            q.explanation;
+
+    } else {
+
+        explanation.innerHTML =
+            "<strong>❌ Falsch!</strong><br><br>" +
+            "<strong>Richtige Antwort:</strong> " +
+            q.answers[q.correct] +
+            "<br><br>" +
+            q.explanation;
+
+    }
 
     explanation.classList.remove("hidden");
-
 
     document.getElementById("nextButton")
         .classList.remove("hidden");
@@ -608,7 +883,7 @@ function nextQuestion() {
 
     if (currentQuestion >= questions.length) {
 
-        showResult();
+        finishTest();
 
     } else {
 
@@ -619,7 +894,9 @@ function nextQuestion() {
 }
 
 
-function showResult() {
+function finishTest() {
+
+    clearInterval(timerInterval);
 
     document.getElementById("quizScreen")
         .classList.add("hidden");
@@ -627,41 +904,54 @@ function showResult() {
     document.getElementById("resultScreen")
         .classList.remove("hidden");
 
-    document.getElementById("finalScore").textContent =
-        score + "/" + questions.length;
+    document.getElementById("finalScore")
+        .textContent =
+        score + " / " + questions.length;
 
 
-    let message = "";
-
-    const percentage =
+    let percentage =
         (score / questions.length) * 100;
 
+    let title = "";
+    let text = "";
 
-    if (percentage >= 80) {
 
-        message =
-            "Sehr gut! 🎉 Deine Leistung ist stark.";
+    if (percentage >= 85) {
 
-    } else if (percentage >= 60) {
+        title = "Sehr gut! 🎉";
 
-        message =
-            "Gut gemacht! 👍 Du bist auf einem guten Weg.";
+        text =
+        "Deine Leistung ist sehr stark. Du hast die meisten Aufgaben richtig gelöst.";
 
-    } else if (percentage >= 40) {
+    } else if (percentage >= 70) {
 
-        message =
-            "Nicht schlecht! 📚 Weiter üben lohnt sich.";
+        title = "Gut gemacht! 👍";
+
+        text =
+        "Du hast ein gutes Ergebnis erreicht. Übe weiter, um noch sicherer zu werden.";
+
+    } else if (percentage >= 50) {
+
+        title = "Weiter üben! 📚";
+
+        text =
+        "Du hast schon einige Strukturen verstanden. Wiederhole besonders die falschen Antworten.";
 
     } else {
 
-        message =
-            "Weiter üben! 💪 Schritt für Schritt wirst du besser.";
+        title = "Noch einmal versuchen! 💪";
+
+        text =
+        "Keine Sorge. Nutze die Erklärungen und versuche den Test noch einmal.";
 
     }
 
 
-    document.getElementById("resultMessage").textContent =
-        message;
+    document.getElementById("resultTitle")
+        .textContent = title;
+
+    document.getElementById("resultText")
+        .textContent = text;
 
 }
 
@@ -676,7 +966,12 @@ function restartTest() {
 
     currentQuestion = 0;
     score = 0;
+    timeLeft = 300;
 
+    document.getElementById("timer")
+        .classList.remove("warning");
+
+    startTimer();
     showQuestion();
 
 }
