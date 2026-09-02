@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deutsch Lückentext – Verkehr B1/B2</title>
+<title>OnSET Deutsch – Verkehr B1/B2</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -14,204 +15,282 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f3f5f7;
+    background: #f2f4f7;
     color: #222;
 }
 
+/* =========================
+   HALAMAN AWAL
+========================= */
+
+#welcomeScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.welcome-box {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+}
+
+.welcome-box h1 {
+    color: #173b57;
+    margin-top: 0;
+}
+
+.welcome-box p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.name-input {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #173b57;
+}
+
+.start-button {
+    width: 100%;
+    padding: 14px;
+    background: #173b57;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   HALAMAN TEST
+========================= */
+
+#testScreen {
+    display: none;
+}
+
 .container {
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
-    padding: 18px;
+    padding: 20px;
 }
 
 .header {
     background: white;
+    padding: 25px;
     border-radius: 16px;
-    padding: 24px;
     margin-bottom: 18px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .header h1 {
-    margin: 0 0 8px;
-    color: #183b56;
+    margin: 0 0 10px;
+    color: #173b57;
 }
 
-.subtitle {
-    color: #666;
-    margin-bottom: 18px;
+.participant {
+    margin-bottom: 15px;
+    color: #555;
 }
 
 .info {
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    gap: 8px;
 }
 
 .badge {
-    background: #edf2f7;
+    background: #edf2f6;
     padding: 8px 13px;
     border-radius: 20px;
     font-size: 14px;
 }
 
+/* =========================
+   TIMER
+========================= */
+
 .timer {
     position: sticky;
     top: 10px;
-    z-index: 20;
-    background: #183b56;
+    z-index: 100;
+    background: #173b57;
     color: white;
-    border-radius: 12px;
-    padding: 12px;
     text-align: center;
-    font-size: 20px;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 18px;
 }
 
+/* =========================
+   PETUNJUK
+========================= */
+
 .instructions {
     background: white;
+    padding: 20px;
     border-radius: 14px;
-    padding: 18px;
     margin-bottom: 18px;
     line-height: 1.6;
 }
 
-.text-box {
-    background: white;
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
-
-.text-box h2 {
+.instructions h3 {
     margin-top: 0;
-    color: #183b56;
+    color: #173b57;
 }
 
-.text-box p {
+/* =========================
+   TEKS
+========================= */
+
+.test-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.test-box h2 {
+    color: #173b57;
+    margin-top: 0;
+}
+
+.test-text {
     font-size: 18px;
-    line-height: 2.35;
-    margin-bottom: 22px;
+    line-height: 2.3;
 }
 
-/* BAGIAN LÜCKE */
+/* =========================
+   LÜCKE
+========================= */
 
-.luecke {
+.blank {
     display: inline-flex;
-    align-items: center;
-    vertical-align: baseline;
-    margin: 0 2px;
+    align-items: baseline;
+    white-space: nowrap;
 }
 
-.luecke-number {
+.blank-number {
     font-size: 11px;
     color: #777;
-    align-self: flex-start;
+    vertical-align: super;
     margin-right: 2px;
-    margin-top: 3px;
 }
 
-.luecke input {
-    width: 70px;
-    max-width: 180px;
+.word-start {
+    font-weight: 500;
+}
+
+.blank-input {
     border: none;
-    border-bottom: 2px solid #555;
-    background: #fafafa;
+    border-bottom: 2px solid #333;
     outline: none;
-    padding: 2px 4px;
+    background: #fafafa;
     font-size: 17px;
+    padding: 2px;
     text-align: center;
     font-family: Arial, sans-serif;
 }
 
-.luecke input:focus {
-    border-bottom: 2px solid #183b56;
-    background: #eef5fa;
+.blank-input:focus {
+    border-bottom-color: #173b57;
+    background: #eef6fb;
 }
 
-.luecke input.correct {
-    border-bottom: 3px solid #2a9d8f;
-    background: #e8f7f3;
+.correct {
+    background: #dff4e8 !important;
+    border-bottom: 3px solid #198754 !important;
 }
 
-.luecke input.wrong {
-    border-bottom: 3px solid #e63946;
-    background: #fdeaea;
+.wrong {
+    background: #fde3e3 !important;
+    border-bottom: 3px solid #dc3545 !important;
 }
 
-.feedback {
-    display: none;
-    font-size: 13px;
-    margin-left: 5px;
-    padding: 4px 7px;
-    border-radius: 6px;
-    white-space: nowrap;
-}
-
-.feedback.show {
-    display: inline-block;
-}
-
-.feedback.correct {
-    background: #e8f7f3;
-    color: #146c43;
-}
-
-.feedback.wrong {
-    background: #fdeaea;
-    color: #b42318;
-}
+/* =========================
+   HASIL PER SOAL
+========================= */
 
 .explanation {
     display: none;
-    background: #fff8df;
-    border-left: 4px solid #e5b94b;
-    border-radius: 7px;
-    padding: 9px 12px;
-    margin: 6px 0;
+    margin: 10px 0 18px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.6;
 }
 
 .explanation.show {
     display: block;
 }
 
+.explanation.correct-answer {
+    background: #e5f7ec;
+}
+
+.explanation.wrong-answer {
+    background: #fff0f0;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
 .buttons {
+    margin-top: 30px;
     display: flex;
     gap: 10px;
-    margin-top: 25px;
-    flex-wrap: wrap;
 }
 
 button {
+    padding: 14px 22px;
     border: none;
     border-radius: 10px;
-    padding: 13px 20px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
-#checkBtn {
-    background: #183b56;
+#submitButton {
+    background: #173b57;
     color: white;
 }
 
-#resetBtn {
+#restartButton {
     display: none;
-    background: #e9ecef;
+    background: #e5e7eb;
     color: #222;
 }
+
+/* =========================
+   RESULT
+========================= */
 
 .result {
     display: none;
     margin-top: 25px;
-    padding: 20px;
+    padding: 25px;
+    text-align: center;
     background: #eef5fa;
     border-radius: 14px;
-    text-align: center;
 }
 
 .result.show {
@@ -219,454 +298,602 @@ button {
 }
 
 .score {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
-    color: #183b56;
-    margin: 8px 0;
+    color: #173b57;
+    margin: 10px 0;
 }
 
-.level {
-    font-weight: bold;
-    margin-top: 8px;
-}
-
-@media (max-width: 600px) {
+@media(max-width: 600px) {
 
     .container {
         padding: 10px;
     }
 
-    .text-box {
+    .test-box {
         padding: 18px;
     }
 
-    .text-box p {
+    .test-text {
         font-size: 17px;
         line-height: 2.2;
     }
 
-    .luecke input {
-        font-size: 16px;
-        width: 65px;
+    .welcome-box {
+        padding: 25px;
     }
 
-    .header h1 {
-        font-size: 24px;
-    }
 }
+
 </style>
 </head>
 
 
 <body>
 
-<div class="container">
 
-    <div class="header">
+<!-- =========================
+     HALAMAN AWAL
+========================= -->
 
-        <h1>Deutsch Lückentext</h1>
+<div id="welcomeScreen">
 
-        <div class="subtitle">
-            Lesen · Wortschatz · Grammatik · Kontext
-        </div>
+    <div class="welcome-box">
 
-        <div class="info">
-            <div class="badge">🇩🇪 Thema: Verkehr</div>
-            <div class="badge">📚 Niveau: B1–B2</div>
-            <div class="badge">✏️ 20 Lücken</div>
-            <div class="badge">⏱️ 5 Minuten</div>
-        </div>
+        <h1>OnSET Deutsch</h1>
 
-    </div>
-
-
-    <div class="timer" id="timer">
-        Zeit: 05:00
-    </div>
-
-
-    <div class="instructions">
-
-        <strong>Aufgabe</strong><br>
-
-        Lesen Sie den Text aufmerksam und ergänzen Sie die fehlenden
-        Buchstaben oder Wörter.
-
-        <br><br>
-
-        Die Lücken haben unterschiedliche Längen.
-        Achten Sie deshalb besonders auf den <strong>Kontext</strong>,
-        die <strong>Grammatik</strong> und die Bedeutung des Textes.
-
-        <br><br>
-
-        <strong>Tipp:</strong>
-        Lesen Sie den ganzen Satz, bevor Sie antworten.
-
-    </div>
-
-
-    <div class="text-box">
-
-        <h2>Verkehr in deutschen Städten</h2>
-
+        <h3>Lückentext: Verkehr</h3>
 
         <p>
-
-        Der Verkehr in deutschen Städten hat in den letzten Jahren
-        deutlich zugenommen. Besonders in den
-        <span class="luecke">
-            <span class="luecke-number">(1)</span>
-            <input type="text" data-answer="Hauptverkehrszeiten">
-        </span>
-        kommt es auf vielen Straßen zu langen Staus.
-
+            Niveau: B1–B2<br>
+            20 Lücken<br>
+            Zeit: 5 Minuten
         </p>
-
 
         <p>
-
-        Viele Berufspendler sind täglich auf ihr Auto angewiesen,
-        weil sie an Orten wohnen, die mit öffentlichen Verkehrsmitteln
-        nur schwer zu
-        <span class="luecke">
-            <span class="luecke-number">(2)</span>
-            <input type="text" data-answer="erreichen">
-        </span>
-        sind.
-
-        Gleichzeitig gibt es immer mehr Menschen, die bewusst
-        auf das Auto
-        <span class="luecke">
-            <span class="luecke-number">(3)</span>
-            <input type="text" data-answer="verzichten">
-        </span>
-        ,
-        um die Umwelt zu schonen.
-
+            Bitte geben Sie Ihren Namen ein.
         </p>
 
+        <input
+            type="text"
+            id="studentName"
+            class="name-input"
+            placeholder="Ihr Name"
+        >
 
-        <p>
-
-        Eine wichtige Rolle spielt dabei der öffentliche
-        Nahverkehr. Busse und Bahnen können viele Fahrgäste
-        gleichzeitig
-        <span class="luecke">
-            <span class="luecke-number">(4)</span>
-            <input type="text" data-answer="befördern">
-        </span>
-        und dadurch die Straßen entlasten.
-
-        Allerdings funktioniert dieses System nur dann gut,
-        wenn die Verkehrsmittel zuverlässig und pünktlich
-        <span class="luecke">
-            <span class="luecke-number">(5)</span>
-            <input type="text" data-answer="sind">
-        </span>.
-
-        </p>
-
-
-        <p>
-
-        Wenn ein Bus regelmäßig zu spät kommt oder
-        <span class="luecke">
-            <span class="luecke-number">(6)</span>
-            <input type="text" data-answer="ausfällt">
-        </span>,
-        verlieren die Fahrgäste schnell das Vertrauen
-        in den öffentlichen Nahverkehr.
-
-        Deshalb fordern viele Bürger bessere Verbindungen
-        und kürzere Wartezeiten.
-
-        </p>
-
-
-        <p>
-
-        In einigen Städten werden inzwischen neue Radwege gebaut,
-        <span class="luecke">
-            <span class="luecke-number">(7)</span>
-            <input type="text" data-answer="sodass">
-        </span>
-        mehr Menschen sicher mit dem Fahrrad fahren können.
-
-        Das ist besonders für kurze Strecken sinnvoll,
-        bei denen das Fahrrad oft eine
-        <span class="luecke">
-            <span class="luecke-number">(8)</span>
-            <input type="text" data-answer="schnellere">
-        </span>
-        Alternative zum Auto darstellt.
-
-        </p>
-
-
-        <p>
-
-        Trotzdem reicht es nicht aus, nur neue Radwege zu bauen.
-        Auch Busse und Bahnen müssen regelmäßig
-        <span class="luecke">
-            <span class="luecke-number">(9)</span>
-            <input type="text" data-answer="gewartet">
-        </span>
-        werden,
-        damit sie sicher und zuverlässig bleiben.
-
-        Außerdem sollten die Fahrpläne besser
-        <span class="luecke">
-            <span class="luecke-number">(10)</span>
-            <input type="text" data-answer="aufeinander">
-        </span>
-        abgestimmt sein.
-
-        </p>
-
-
-        <p>
-
-        Ein weiteres Problem ist die Parkplatzsuche.
-        In dicht besiedelten Stadtteilen verbringen Autofahrer
-        manchmal viele Minuten damit, einen
-        <span class="luecke">
-            <span class="luecke-number">(11)</span>
-            <input type="text" data-answer="freien">
-        </span>
-        Parkplatz zu finden.
-
-        Dadurch entsteht zusätzlicher Verkehr,
-        obwohl die
-        <span class="luecke">
-            <span class="luecke-number">(12)</span>
-            <input type="text" data-answer="Fahrstrecke">
-        </span>
-        eigentlich schon beendet ist.
-
-        </p>
-
-
-        <p>
-
-        Digitale Technologien könnten in Zukunft dabei helfen,
-        dieses Problem zu lösen.
-
-        Intelligente Ampeln können beispielsweise erkennen,
-        wie viele Fahrzeuge sich auf einer Straße befinden,
-        und die Dauer der Grünphase
-        <span class="luecke">
-            <span class="luecke-number">(13)</span>
-            <input type="text" data-answer="entsprechend">
-        </span>
-        anpassen.
-
-        </p>
-
-
-        <p>
-
-        Auch Smartphone-Apps können den Alltag erleichtern.
-        Sie zeigen beispielsweise an, wann der nächste Bus
-        kommt oder wo sich noch ein
-        <span class="luecke">
-            <span class="luecke-number">(14)</span>
-            <input type="text" data-answer="Parkplatz">
-        </span>
-        befindet.
-
-        Auf diese Weise können Autofahrer ihre Fahrt besser
-        <span class="luecke">
-            <span class="luecke-number">(15)</span>
-            <input type="text" data-answer="planen">
-        </span>
-        .
-
-        </p>
-
-
-        <p>
-
-        Eine nachhaltige Verkehrspolitik wird jedoch nur
-        erfolgreich sein,
-        <span class="luecke">
-            <span class="luecke-number">(16)</span>
-            <input type="text" data-answer="wenn">
-        </span>
-        Politik,
-        Unternehmen und Bevölkerung gemeinsam
-        nach Lösungen suchen.
-
-        Jeder Einzelne kann dazu
-        <span class="luecke">
-            <span class="luecke-number">(17)</span>
-            <input type="text" data-answer="beitragen">
-        </span>,
-        indem er häufiger öffentliche Verkehrsmittel nutzt.
-
-        </p>
-
-
-        <p>
-
-        Wer kurze Strecken zu Fuß zurücklegt oder mit dem Fahrrad
-        fährt, kann nicht nur Geld sparen,
-        <span class="luecke">
-            <span class="luecke-number">(18)</span>
-            <input type="text" data-answer="sondern">
-        </span>
-        auch etwas für die Umwelt tun.
-
-        Wichtig ist außerdem, dass die Menschen
-        <span class="luecke">
-            <span class="luecke-number">(19)</span>
-            <input type="text" data-answer="über">
-        </span>
-        die Folgen ihres Mobilitätsverhaltens nachdenken.
-
-        </p>
-
-
-        <p>
-
-        Denn nur wenn viele Menschen bereit sind, ihr Verhalten
-        zu verändern, kann der Verkehr in den Städten langfristig
-        umweltfreundlicher und
-        <span class="luecke">
-            <span class="luecke-number">(20)</span>
-            <input type="text" data-answer="nachhaltiger">
-        </span>
-        werden.
-
-        </p>
-
-
-        <div class="buttons">
-
-            <button id="checkBtn" onclick="checkAnswers()">
-                Antworten prüfen
-            </button>
-
-            <button id="resetBtn" onclick="resetTest()">
-                Test wiederholen
-            </button>
-
-        </div>
-
-
-        <div class="result" id="result">
-
-            <div>Dein Ergebnis</div>
-
-            <div class="score" id="score">
-                0 / 20
-            </div>
-
-            <div id="percentage"></div>
-
-            <div class="level" id="level"></div>
-
-        </div>
+        <button class="start-button" onclick="startTest()">
+            Test starten
+        </button>
 
     </div>
 
 </div>
 
 
+
+<!-- =========================
+     HALAMAN TEST
+========================= -->
+
+<div id="testScreen">
+
+<div class="container">
+
+
+<div class="header">
+
+    <h1>OnSET Deutsch</h1>
+
+    <div class="participant" id="participantName"></div>
+
+    <div class="info">
+        <div class="badge">🇩🇪 Verkehr</div>
+        <div class="badge">📚 B1–B2</div>
+        <div class="badge">✏️ 20 Lücken</div>
+        <div class="badge">⏱️ 5 Minuten</div>
+    </div>
+
+</div>
+
+
+<div class="timer" id="timer">
+    Zeit: 05:00
+</div>
+
+
+<div class="instructions">
+
+    <h3>Aufgabe</h3>
+
+    Ergänzen Sie die fehlende Hälfte der Wörter.
+
+    <br><br>
+
+    <strong>Beispiel:</strong>
+
+    <br>
+
+    Verk____ → Verkehr
+
+    <br><br>
+
+    Achten Sie auf:
+
+    <ul>
+        <li>Wortschatz</li>
+        <li>Grammatik</li>
+        <li>Kontext</li>
+    </ul>
+
+</div>
+
+
+<div class="test-box">
+
+<h2>Verkehr in deutschen Städten</h2>
+
+<div class="test-text" id="testText"></div>
+
+
+<div class="buttons">
+
+<button id="submitButton" onclick="checkAnswers()">
+Antworten prüfen
+</button>
+
+<button id="restartButton" onclick="restartTest()">
+Test wiederholen
+</button>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2 id="resultName"></h2>
+
+<div class="score" id="score"></div>
+
+<p id="resultMessage"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
-let timeLeft = 300;
-let submitted = false;
 
-const inputs = document.querySelectorAll(".luecke input");
+/* ==========================================
+   DATA SOAL
+========================================== */
+
+/*
+Setiap target word dibagi otomatis:
+
+Panjang genap:
+8 huruf = 4 awal + 4 rumpang
+
+Panjang ganjil:
+9 huruf = 4 awal + 5 rumpang
+*/
+
+const questions = [
+
+{
+number: 1,
+word: "zugenommen",
+explanation: "„zugenommen“ berasal dari verba „zunehmen“. Dalam Perfekt digunakan: „hat zugenommen“."
+},
+
+{
+number: 2,
+word: "Hauptverkehrszeiten",
+explanation: "„Hauptverkehrszeiten“ adalah waktu ketika lalu lintas sangat ramai, misalnya pagi dan sore hari."
+},
+
+{
+number: 3,
+word: "umweltfreundlichere",
+explanation: "„umweltfreundlicher“ berarti lebih ramah lingkungan. Bentuk ini digunakan untuk membandingkan."
+},
+
+{
+number: 4,
+word: "verzichten",
+explanation: "„auf etwas verzichten“ adalah ungkapan tetap yang berarti tidak menggunakan atau melepaskan sesuatu."
+},
+
+{
+number: 5,
+word: "Nahverkehr",
+explanation: "„Nahverkehr“ berarti transportasi lokal, misalnya bus atau kereta dalam wilayah kota."
+},
+
+{
+number: 6,
+word: "befördern",
+explanation: "„befördern“ berarti mengangkut atau membawa penumpang dari satu tempat ke tempat lain."
+},
+
+{
+number: 7,
+word: "ausfällt",
+explanation: "„ausfallen“ berarti tidak jadi beroperasi. Misalnya: Der Zug fällt aus."
+},
+
+{
+number: 8,
+word: "organisieren",
+explanation: "„organisieren“ berarti mengatur atau menyusun sesuatu secara terencana."
+},
+
+{
+number: 9,
+word: "abgestimmt",
+explanation: "„aufeinander abgestimmt“ berarti saling disesuaikan atau terkoordinasi."
+},
+
+{
+number: 10,
+word: "sodass",
+explanation: "„sodass“ digunakan untuk menunjukkan akibat atau hasil dari suatu tindakan."
+},
+
+{
+number: 11,
+word: "günstige",
+explanation: "„günstig“ berarti murah atau terjangkau. Akhiran „-e“ mengikuti bentuk kata dalam kalimat."
+},
+
+{
+number: 12,
+word: "entsprechend",
+explanation: "„entsprechend“ berarti sesuai dengan kondisi atau situasi tertentu."
+},
+
+{
+number: 13,
+word: "planen",
+explanation: "„planen“ berarti merencanakan."
+},
+
+{
+number: 14,
+word: "Parkplatz",
+explanation: "„Parkplatz“ berarti tempat parkir."
+},
+
+{
+number: 15,
+word: "zusammenarbeiten",
+explanation: "„zusammenarbeiten“ berarti bekerja sama."
+},
+
+{
+number: 16,
+word: "beitragen",
+explanation: "„zu etwas beitragen“ berarti memberikan kontribusi terhadap sesuatu."
+},
+
+{
+number: 17,
+word: "sondern",
+explanation: "Digunakan dalam pola „nicht nur ..., sondern auch ...“."
+},
+
+{
+number: 18,
+word: "Mobilitätsverhalten",
+explanation: "„Mobilitätsverhalten“ berarti kebiasaan atau perilaku seseorang dalam melakukan perjalanan."
+},
+
+{
+number: 19,
+word: "nachhaltiger",
+explanation: "„nachhaltiger“ berarti lebih berkelanjutan."
+},
+
+{
+number: 20,
+word: "Bedeutung",
+explanation: "„Bedeutung“ berarti arti atau tingkat pentingnya sesuatu."
+}
+
+];
 
 
-/* ERKLÄRUNGEN */
+/* ==========================================
+   MEMBUAT RUMPANG OTOMATIS
+========================================== */
 
-const explanations = {
+function createBlank(question) {
 
-1:
-"„Hauptverkehrszeiten“ bezeichnet die Zeiten, in denen besonders viele Menschen unterwegs sind, zum Beispiel morgens und am späten Nachmittag. Hier passt der Plural, weil es mehrere tägliche Stoßzeiten gibt.",
+    const word = question.word;
 
-2:
-"„zu erreichen sein“ bedeutet, dass man einen Ort mit einem Verkehrsmittel erreichen kann. Nach „nur schwer zu ...“ steht der Infinitiv „erreichen“.",
+    /* Bagian awal = dibulatkan ke bawah */
 
-3:
-"„auf etwas verzichten“ ist eine feste Verbindung. Hier bedeutet „auf das Auto verzichten“, das Auto nicht zu benutzen.",
+    const visibleLength =
+        Math.floor(word.length / 2);
 
-4:
-"„Fahrgäste befördern“ ist typischer Wortschatz im Bereich Verkehr. „Befördern“ bedeutet, Personen von einem Ort zu einem anderen zu transportieren.",
+    /* Bagian yang harus diisi */
 
-5:
-"Nach „wenn“ steht hier ein Nebensatz. Das Subjekt „die Verkehrsmittel“ ist Plural, deshalb lautet die Verbform „sind“.",
+    const missingPart =
+        word.substring(visibleLength);
 
-6:
-"„ausfallen“ bedeutet bei einem Bus oder Zug, dass er nicht fährt. Im Nebensatz steht das konjugierte Verb am Ende: „wenn ein Bus ausfällt“.",
+    /* Bagian yang terlihat */
 
-7:
-"„sodass“ leitet einen Folgesatz ein. Neue Radwege werden gebaut, sodass mehr Menschen sicher Fahrrad fahren können.",
-
-8:
-"„eine schnellere Alternative“: Das Adjektiv beschreibt das Fahrrad im Vergleich zum Auto. Wegen „eine ... Alternative“ steht hier die feminine Form „schnellere“.",
-
-9:
-"„gewartet werden“ ist Passiv. Busse und Bahnen werden regelmäßig gewartet. Das Verb „warten“ erhält hier die Form „gewartet“.",
-
-10:
-"„aufeinander abgestimmt sein“ ist eine feste Wendung. Sie bedeutet, dass verschiedene Dinge gut miteinander koordiniert sind.",
-
-11:
-"„einen freien Parkplatz“: Nach dem unbestimmten Artikel „einen“ und vor dem maskulinen Akkusativ „Parkplatz“ bekommt das Adjektiv die Endung „-en“.",
-
-12:
-"„Fahrstrecke“ bezeichnet die Strecke bzw. Distanz, die jemand mit einem Fahrzeug zurücklegt.",
-
-13:
-"„entsprechend anpassen“ bedeutet, etwas an eine bestimmte Situation anzupassen. Die Ampeln passen die Grünphase an die Verkehrssituation an.",
-
-14:
-"„Parkplatz“ ist ein wichtiges Wort im Bereich Verkehr. Ein Parkplatz ist ein Ort, an dem Fahrzeuge abgestellt werden können.",
-
-15:
-"„eine Fahrt planen“ ist eine häufige Verbindung. Die App hilft den Autofahrern dabei, ihre Fahrt besser zu organisieren.",
-
-16:
-"„wenn“ leitet hier einen Bedingungssatz ein: Die Verkehrspolitik wird erfolgreich sein, wenn verschiedene Gruppen zusammenarbeiten.",
-
-17:
-"„zu etwas beitragen“ bedeutet, bei der Entwicklung oder Verbesserung von etwas mitzuwirken.",
-
-18:
-"„nicht nur ..., sondern auch ...“ ist eine feste zweiteilige Konjunktion. Sie verbindet zwei gleichwertige Aussagen.",
-
-19:
-"„über etwas nachdenken“ ist eine feste Verbindung. Deshalb steht hier die Präposition „über“.",
-
-20:
-"„nachhaltiger“ ist die Komparativform von „nachhaltig“. Im Satz wird gesagt, dass der Verkehr in Zukunft noch nachhaltiger werden kann."
-
-};
+    const visiblePart =
+        word.substring(0, visibleLength);
 
 
-/* NORMALISIERUNG */
+    /* Lebar input berdasarkan jumlah huruf */
 
-function normalize(text) {
+    const inputWidth =
+        Math.max(45, missingPart.length * 13);
 
-    return text
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ");
+
+    return `
+
+    <span class="blank">
+
+        <span class="blank-number">
+            (${question.number})
+        </span>
+
+        <span class="word-start">
+            ${visiblePart}
+        </span>
+
+        <input
+            type="text"
+            class="blank-input"
+            id="answer${question.number}"
+            data-answer="${missingPart}"
+            data-number="${question.number}"
+            style="width:${inputWidth}px"
+            autocomplete="off"
+        >
+
+    </span>
+
+    `;
 
 }
 
 
-/* TIMER */
+/* ==========================================
+   MEMBUAT TEKS
+========================================== */
+
+function createTest() {
+
+    const blanks = {};
+
+    questions.forEach(question => {
+
+        blanks[question.number] =
+            createBlank(question);
+
+    });
+
+
+    document.getElementById("testText").innerHTML = `
+
+
+<p>
+
+Der Verkehr in deutschen Städten hat in den letzten Jahren deutlich
+${blanks[1]}.
+
+Besonders während der ${blanks[2]} kommt es auf vielen Straßen zu
+langen Staus.
+
+</p>
+
+
+<p>
+
+Viele Menschen fahren täglich mit dem Auto zur Arbeit, obwohl
+öffentliche Verkehrsmittel oft eine ${blanks[3]} Alternative darstellen.
+
+Ein wichtiger Grund dafür ist, dass manche Menschen nicht auf ihr Auto
+${blanks[4]} möchten.
+
+</p>
+
+
+<p>
+
+Der öffentliche ${blanks[5]} spielt deshalb eine wichtige Rolle.
+
+Busse und Bahnen können viele Fahrgäste gleichzeitig
+${blanks[6]} und dadurch den Straßenverkehr entlasten.
+
+</p>
+
+
+<p>
+
+Wenn ein Zug regelmäßig zu spät kommt oder sogar
+${blanks[7]}, verlieren viele Fahrgäste das Vertrauen
+in den öffentlichen Nahverkehr.
+
+</p>
+
+
+<p>
+
+Deshalb versuchen viele Städte, ihre Verkehrssysteme besser
+zu ${blanks[8]}.
+
+Die Fahrpläne verschiedener Verkehrsmittel sollten gut aufeinander
+${blanks[9]} sein.
+
+</p>
+
+
+<p>
+
+Außerdem werden neue Radwege gebaut, ${blanks[10]}
+mehr Menschen kurze Strecken mit dem Fahrrad zurücklegen können.
+
+Das Fahrrad ist besonders in Großstädten häufig eine schnelle
+und ${blanks[11]} Alternative.
+
+</p>
+
+
+<p>
+
+Intelligente Ampeln können erkennen, wie viele Fahrzeuge sich auf
+einer Straße befinden, und ihre Grünphasen
+${blanks[12]} anpassen.
+
+</p>
+
+
+<p>
+
+Viele Menschen benutzen heute Apps, um ihre Fahrt besser zu
+${blanks[13]}.
+
+Diese Apps können zeigen, wann der nächste Bus kommt oder wo noch
+ein freier ${blanks[14]} zu finden ist.
+
+</p>
+
+
+<p>
+
+Eine nachhaltige Verkehrspolitik wird nur dann erfolgreich sein,
+wenn Politik und Bevölkerung gemeinsam
+${blanks[15]}.
+
+Jeder Einzelne kann dazu ${blanks[16]}, indem er häufiger Bus
+oder Bahn benutzt.
+
+</p>
+
+
+<p>
+
+Wer kurze Strecken zu Fuß zurücklegt oder Fahrrad fährt,
+spart nicht nur Geld, ${blanks[17]} schützt auch die Umwelt.
+
+Dabei sollte man besonders über das eigene
+${blanks[18]} nachdenken.
+
+</p>
+
+
+<p>
+
+Nur wenn viele Menschen bereit sind, ihr Verhalten zu verändern,
+kann der Verkehr langfristig umweltfreundlicher und
+${blanks[19]} werden.
+
+Eine solche Entwicklung ist für die Zukunft unserer Städte
+von großer ${blanks[20]}.
+
+</p>
+
+`;
+
+}
+
+
+/* ==========================================
+   HALAMAN NAMA
+========================================== */
+
+function startTest() {
+
+    const name =
+        document.getElementById("studentName").value.trim();
+
+
+    if (name === "") {
+
+        alert("Bitte geben Sie zuerst Ihren Namen ein.");
+
+        return;
+
+    }
+
+
+    document.getElementById("welcomeScreen")
+        .style.display = "none";
+
+
+    document.getElementById("testScreen")
+        .style.display = "block";
+
+
+    document.getElementById("participantName")
+        .innerHTML =
+        "<strong>Teilnehmer/in:</strong> " + name;
+
+
+    /* TIMER BARU DIMULAI */
+
+    startTimer();
+
+}
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+let timeLeft = 300;
+let timerInterval;
+let submitted = false;
+
+
+function startTimer() {
+
+    updateTimer();
+
+
+    timerInterval = setInterval(() => {
+
+        timeLeft--;
+
+        updateTimer();
+
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+            if (!submitted) {
+
+                alert("Die Zeit ist abgelaufen!");
+
+                checkAnswers();
+
+            }
+
+        }
+
+    }, 1000);
+
+}
+
 
 function updateTimer() {
 
-    const minutes = Math.floor(timeLeft / 60);
+    const minutes =
+        Math.floor(timeLeft / 60);
 
-    const seconds = timeLeft % 60;
+    const seconds =
+        timeLeft % 60;
+
 
     document.getElementById("timer").textContent =
         "Zeit: " +
@@ -674,36 +901,12 @@ function updateTimer() {
         ":" +
         String(seconds).padStart(2, "0");
 
-
-    if (timeLeft <= 0) {
-
-        clearInterval(timerInterval);
-
-        if (!submitted) {
-
-            alert(
-                "Die Zeit ist abgelaufen! " +
-                "Deine Antworten werden jetzt überprüft."
-            );
-
-            checkAnswers();
-
-        }
-
-        return;
-    }
-
-    timeLeft--;
-
 }
 
 
-const timerInterval = setInterval(updateTimer, 1000);
-
-updateTimer();
-
-
-/* ANTWORTEN PRÜFEN */
+/* ==========================================
+   CEK JAWABAN
+========================================== */
 
 function checkAnswers() {
 
@@ -713,166 +916,159 @@ function checkAnswers() {
 
     clearInterval(timerInterval);
 
+
     let correct = 0;
 
 
-    inputs.forEach((input, index) => {
+    questions.forEach(question => {
 
-        const number = index + 1;
+        const visibleLength =
+            Math.floor(question.word.length / 2);
 
-        const userAnswer = normalize(input.value);
+        const correctAnswer =
+            question.word.substring(visibleLength);
 
-        const correctAnswer = normalize(
-            input.dataset.answer
-        );
+        const input =
+            document.getElementById(
+                "answer" + question.number
+            );
 
+        const userAnswer =
+            input.value.trim().toLowerCase();
 
-        const parent = input.closest(".luecke");
+        const expectedAnswer =
+            correctAnswer.toLowerCase();
 
-
-        /* Feedback */
 
         const feedback =
-            document.createElement("span");
-
-        feedback.className = "feedback";
-
-
-        /* Erklärung */
-
-        const explanation =
             document.createElement("div");
 
-        explanation.className = "explanation";
-
-        explanation.innerHTML =
-            "<strong>Erklärung:</strong> " +
-            explanations[number];
+        feedback.className = "explanation show";
 
 
-        if (userAnswer === correctAnswer) {
+        if (userAnswer === expectedAnswer) {
 
             correct++;
 
             input.classList.add("correct");
 
-            feedback.textContent =
-                "✓ Richtig";
+            feedback.classList.add("correct-answer");
 
-            feedback.classList.add(
-                "show",
-                "correct"
-            );
+            feedback.innerHTML = `
+                ✓ <strong>Richtig!</strong><br>
+                ${question.explanation}
+            `;
 
         } else {
 
             input.classList.add("wrong");
 
-            feedback.innerHTML =
-                "✗ Falsch – richtig: <strong>" +
-                input.dataset.answer +
-                "</strong>";
+            feedback.classList.add("wrong-answer");
 
-            feedback.classList.add(
-                "show",
-                "wrong"
-            );
-
-            explanation.classList.add("show");
-
-        }
-
-
-        parent.appendChild(feedback);
-
-
-        if (userAnswer !== correctAnswer) {
-
-            parent.parentNode.insertBefore(
-                explanation,
-                parent.nextSibling
-            );
+            feedback.innerHTML = `
+                ✗ <strong>Falsch.</strong><br>
+                Jawaban yang benar:
+                <strong>${correctAnswer}</strong><br><br>
+                ${question.explanation}
+            `;
 
         }
 
 
         input.disabled = true;
 
+
+        input.parentNode.parentNode.insertBefore(
+            feedback,
+            input.parentNode.nextSibling
+        );
+
     });
 
-
-    /* HASIL */
 
     const percentage =
         Math.round((correct / 20) * 100);
 
 
+    const name =
+        document.getElementById("studentName").value;
+
+
+    document.getElementById("resultName").textContent =
+        "Ergebnis von " + name;
+
+
     document.getElementById("score").textContent =
-        correct + " / 20";
+        correct + " / 20 (" + percentage + "%)";
 
 
-    document.getElementById("percentage").textContent =
-        percentage + "%";
-
-
-    let levelText = "";
+    let message = "";
 
 
     if (percentage >= 90) {
 
-        levelText =
-            "Sehr gut! 🎉 Sehr starke Leistung.";
+        message =
+            "Ausgezeichnet! 🎉 Sehr starke Leistung!";
 
     } else if (percentage >= 75) {
 
-        levelText =
-            "Gut gemacht! 👍 Dein Ergebnis ist gut.";
+        message =
+            "Sehr gut! Dein Verständnis ist bereits stark.";
 
     } else if (percentage >= 60) {
 
-        levelText =
-            "Nicht schlecht! Weiter üben.";
+        message =
+            "Gut gemacht! Schau dir die Erklärungen genau an.";
 
     } else {
 
-        levelText =
-            "Weiter üben! 💪 Achte besonders auf die Erklärungen.";
+        message =
+            "Weiter üben! 💪 Nutze die Erklärungen, um Wortschatz und Grammatik zu verbessern.";
 
     }
 
 
-    document.getElementById("level").textContent =
-        levelText;
+    document.getElementById("resultMessage")
+        .textContent = message;
 
 
-    document
-        .getElementById("result")
+    document.getElementById("result")
         .classList.add("show");
 
 
-    document.getElementById("checkBtn")
+    document.getElementById("submitButton")
         .style.display = "none";
 
 
-    document.getElementById("resetBtn")
+    document.getElementById("restartButton")
         .style.display = "inline-block";
 
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
 }
 
 
-/* ULANGI TEST */
+/* ==========================================
+   ULANG TEST
+========================================== */
 
-function resetTest() {
+function restartTest() {
 
     location.reload();
 
 }
+
+
+/* ==========================================
+   BUAT TEST SAAT WEBSITE DIBUKA
+========================================== */
+
+createTest();
+
 
 </script>
 
