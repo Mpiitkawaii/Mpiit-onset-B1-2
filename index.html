@@ -1,5 +1,687 @@
 <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OnSET B1–B2 Übungstest</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .info-box {
+            background: #f1f3f5;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-box strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 14px 22px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #222;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .progress {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #222;
+            transition: width 0.3s;
+        }
+
+        .question-number {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            font-size: 23px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .answer {
+            width: 100%;
+            text-align: left;
+            background: #f7f7f7;
+            border: 2px solid #e1e1e1;
+            color: #222;
+        }
+
+        .answer:hover {
+            background: #eeeeee;
+        }
+
+        .answer.correct {
+            background: #dff5e3;
+            border-color: #43a047;
+        }
+
+        .answer.wrong {
+            background: #fde0e0;
+            border-color: #e53935;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f1f3f5;
+            line-height: 1.6;
+        }
+
+        .next-container {
+            margin-top: 25px;
+            text-align: right;
+        }
+
+        .next {
+            background: #222;
+            color: white;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .score {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .restart {
+            background: #222;
+            color: white;
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .question {
+                font-size: 19px;
+            }
+
+            .topbar {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- START -->
+    <div id="startScreen" class="card">
+
+        <div class="header">
+            <h1>🇩🇪 OnSET B1–B2</h1>
+            <p>
+                Deutsch Übungstest
+            </p>
+        </div>
+
+        <div class="info">
+            <div class="info-box">
+                <strong>10</strong>
+                Fragen
+            </div>
+
+            <div class="info-box">
+                <strong>B1–B2</strong>
+                Niveau
+            </div>
+
+            <div class="info-box">
+                <strong>✓</strong>
+                Sofortiges Feedback
+            </div>
+        </div>
+
+        <p style="line-height:1.7; color:#555;">
+            Willkommen zum Deutsch-Übungstest!
+            Lies jede Aufgabe aufmerksam und wähle die Antwort,
+            die am besten passt.
+        </p>
+
+        <button class="primary" onclick="startTest()">
+            Test starten
+        </button>
+
+        <div class="footer">
+            Übungsmaterial – kein offizieller OnSET-Test
+        </div>
+
+    </div>
 
 
+    <!-- QUIZ -->
+    <div id="quizScreen" class="card hidden">
 
+        <div class="topbar">
+            <strong>OnSET B1–B2</strong>
+            <span id="scoreDisplay">Punkte: 0</span>
+        </div>
+
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="question-number" id="questionNumber">
+            Frage 1 von 10
+        </div>
+
+        <div class="question" id="questionText"></div>
+
+        <div id="answers" class="answers"></div>
+
+        <div id="explanation" class="explanation hidden"></div>
+
+        <div class="next-container">
+            <button id="nextButton" class="next hidden" onclick="nextQuestion()">
+                Nächste Frage →
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+    <div id="resultScreen" class="card hidden">
+
+        <div class="result">
+
+            <h1>🎉 Test beendet!</h1>
+
+            <p style="margin-top:15px;">
+                Dein Ergebnis:
+            </p>
+
+            <div class="score" id="finalScore">
+                0/10
+            </div>
+
+            <div class="result-message" id="resultMessage"></div>
+
+            <p style="line-height:1.7; color:#666;">
+                Dies ist nur eine Übung und keine offizielle
+                Einstufung deines Sprachniveaus.
+            </p>
+
+            <button class="restart" onclick="restartTest()">
+                Test wiederholen
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+    {
+        question: "Obwohl er sehr müde war, ______ er weitergearbeitet.",
+        answers: [
+            "hat",
+            "ist",
+            "wird",
+            "wäre"
+        ],
+        correct: 0,
+        explanation:
+            "Richtig ist „hat“. Das Perfekt von „weiterarbeiten“ wird mit „haben“ gebildet."
+    },
+
+    {
+        question: "Wenn ich mehr Zeit ______, würde ich öfter Deutsch lernen.",
+        answers: [
+            "habe",
+            "hatte",
+            "hätte",
+            "haben"
+        ],
+        correct: 2,
+        explanation:
+            "Nach „wenn“ im irrealen Bedingungssatz verwendet man hier den Konjunktiv II: „hätte“."
+    },
+
+    {
+        question: "Die Studentin interessiert sich sehr ______ Umweltfragen.",
+        answers: [
+            "für",
+            "an",
+            "mit",
+            "über"
+        ],
+        correct: 0,
+        explanation:
+            "Die feste Verbindung lautet: „sich interessieren für + Akkusativ“."
+    },
+
+    {
+        question: "Das Projekt wurde wegen des schlechten Wetters ______.",
+        answers: [
+            "abgesagt",
+            "abgesagt worden",
+            "absagen",
+            "abgesagen"
+        ],
+        correct: 0,
+        explanation:
+            "Im Passiv mit „wurde“ steht das Partizip II: „wurde abgesagt“."
+    },
+
+    {
+        question: "Er behauptet, dass er gestern keine Zeit ______.",
+        answers: [
+            "hat",
+            "hatte",
+            "haben",
+            "hätte"
+        ],
+        correct: 1,
+        explanation:
+            "Da „gestern“ auf die Vergangenheit verweist, passt hier „hatte“."
+    },
+
+    {
+        question: "Viele Menschen achten inzwischen darauf, weniger Plastik ______.",
+        answers: [
+            "verwenden",
+            "zu verwenden",
+            "verwendet",
+            "verwendeten"
+        ],
+        correct: 1,
+        explanation:
+            "Nach „darauf achten“ folgt häufig eine Konstruktion mit „zu + Infinitiv“."
+    },
+
+    {
+        question: "Die Stadt plant neue Maßnahmen, ______ die Luftqualität zu verbessern.",
+        answers: [
+            "damit",
+            "um",
+            "obwohl",
+            "während"
+        ],
+        correct: 1,
+        explanation:
+            "„um ... zu“ drückt einen Zweck aus: „um die Luftqualität zu verbessern“."
+    },
+
+    {
+        question: "Ich habe den Artikel gelesen, ______ du mir empfohlen hast.",
+        answers: [
+            "der",
+            "den",
+            "dem",
+            "dessen"
+        ],
+        correct: 1,
+        explanation:
+            "„den“ steht hier im Akkusativ, weil „empfehlen“ ein Akkusativobjekt verlangt."
+    },
+
+    {
+        question: "Trotz ______ Regens fand die Veranstaltung draußen statt.",
+        answers: [
+            "starker",
+            "starkem",
+            "starken",
+            "stark"
+        ],
+        correct: 2,
+        explanation:
+            "„trotz“ verlangt standardsprachlich den Genitiv: „trotz starken Regens“."
+    },
+
+    {
+        question: "Die Ergebnisse zeigen, dass nachhaltiges Handeln immer wichtiger ______.",
+        answers: [
+            "wird",
+            "werden",
+            "wurde",
+            "worden"
+        ],
+        correct: 0,
+        explanation:
+            "„Handeln“ ist hier ein neutrales Singularwort: „Handeln wird wichtiger“."
+    }
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+function startTest() {
+
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("resultScreen").classList.add("hidden");
+    document.getElementById("quizScreen").classList.remove("hidden");
+
+    showQuestion();
+}
+
+
+function showQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "Frage " + (currentQuestion + 1) + " von " + questions.length;
+
+    document.getElementById("questionText").textContent =
+        q.question;
+
+    document.getElementById("scoreDisplay").textContent =
+        "Punkte: " + score;
+
+    const progress =
+        ((currentQuestion) / questions.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    const answersContainer =
+        document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+    document.getElementById("explanation")
+        .classList.add("hidden");
+
+    document.getElementById("nextButton")
+        .classList.add("hidden");
+
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+        button.textContent =
+            String.fromCharCode(65 + index) + ". " + answer;
+
+        button.onclick = function() {
+            checkAnswer(index);
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+
+function checkAnswer(selectedIndex) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach((button, index) => {
+
+        button.disabled = true;
+
+        if (index === q.correct) {
+            button.classList.add("correct");
+        }
+
+        if (index === selectedIndex &&
+            selectedIndex !== q.correct) {
+
+            button.classList.add("wrong");
+        }
+
+    });
+
+
+    if (selectedIndex === q.correct) {
+
+        score++;
+
+        document.getElementById("scoreDisplay").textContent =
+            "Punkte: " + score;
+
+    }
+
+
+    const explanation =
+        document.getElementById("explanation");
+
+    explanation.textContent =
+        q.explanation;
+
+    explanation.classList.remove("hidden");
+
+
+    document.getElementById("nextButton")
+        .classList.remove("hidden");
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+
+        showResult();
+
+    } else {
+
+        showQuestion();
+
+    }
+
+}
+
+
+function showResult() {
+
+    document.getElementById("quizScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("finalScore").textContent =
+        score + "/" + questions.length;
+
+
+    let message = "";
+
+    const percentage =
+        (score / questions.length) * 100;
+
+
+    if (percentage >= 80) {
+
+        message =
+            "Sehr gut! 🎉 Deine Leistung ist stark.";
+
+    } else if (percentage >= 60) {
+
+        message =
+            "Gut gemacht! 👍 Du bist auf einem guten Weg.";
+
+    } else if (percentage >= 40) {
+
+        message =
+            "Nicht schlecht! 📚 Weiter üben lohnt sich.";
+
+    } else {
+
+        message =
+            "Weiter üben! 💪 Schritt für Schritt wirst du besser.";
+
+    }
+
+
+    document.getElementById("resultMessage").textContent =
+        message;
+
+}
+
+
+function restartTest() {
+
+    document.getElementById("resultScreen")
+        .classList.add("hidden");
+
+    document.getElementById("quizScreen")
+        .classList.remove("hidden");
+
+    currentQuestion = 0;
+    score = 0;
+
+    showQuestion();
+
+}
+
+</script>
+
+</body>
 </html>
